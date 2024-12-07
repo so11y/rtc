@@ -86,9 +86,9 @@ app.get("/", (req, res) => {
   return res.send(fs.readFileSync("./index.html", "utf-8"));
 });
 
-const server = app.listen(3000, () => {
-  console.log("http://localhost:3000");
-  console.log("Server started on port 3000");
+const server = app.listen(8080, () => {
+  console.log("http://localhost:8080");
+  console.log("Server started on port 8080");
 });
 
 server.on("upgrade", (req, socket, head) => {

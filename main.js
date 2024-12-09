@@ -82,8 +82,7 @@ webSocket.on("connection", (ws) => {
 app.use(express.static(path.join(__dirname, "static")));
 
 app.get("/", (req, res) => {
-  res.setHeader("content-type", "text/html"); // 修改为 text/html
-  return res.send(fs.readFileSync("./index.html", "utf-8"));
+  return res.sendDate("./index.html");
 });
 
 const server = app.listen(8080, () => {

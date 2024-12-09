@@ -1,5 +1,3 @@
-import { useSocket } from "./socket.js";
-
 const configuration = {
   // iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
 };
@@ -22,6 +20,9 @@ async function pc1Handle() {
   window.dataChannel.onopen = (event) => {
     console.log("Send channel state is: " + dataChannel.readyState);
     window.dataChannel.send("Hi you!", event);
+  };
+  window.dataChannel.onmessage = (event) => {
+    console.log(event.data, "(new message)");
   };
   const offer = await pc1.createOffer();
 
@@ -47,6 +48,7 @@ async function pc2Handle() {
   const pc = crateRtcPeer("join");
   pc.ondatachannel = (event) => {
     const channel = event.channel;
+    window.dataChannel = channel;
     channel.onmessage = (event) => {
       console.log(event.data);
     };

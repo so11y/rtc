@@ -85,9 +85,11 @@ app.get("/", (req, res) => {
   return res.sendDate("./index.html");
 });
 
-const server = app.listen(8080, () => {
-  console.log("http://localhost:8080");
-  console.log("Server started on port 8080");
+const port = 3008; //process.env.PORT || 3008;
+
+const server = app.listen(port, () => {
+  console.log(`http://localhost:${port}`);
+  console.log(`Server started on port ${port}`);
 });
 
 server.on("upgrade", (req, socket, head) => {

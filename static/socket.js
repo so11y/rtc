@@ -1,5 +1,5 @@
-export function useSocket() {
-  const ws = new WebSocket("ws://localhost:8080");
+function useSocket() {
+  const ws = new WebSocket("ws://localhost:3008");
   const state = Promise.withResolvers();
   const map = new Map();
   ws.addEventListener("open", state.resolve);
